@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estrela de Ouro - Moda Feminina</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .stars-bg {
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stars-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #ffd700, transparent),
+                radial-gradient(2px 2px at 40px 70px, #ffd700, transparent),
+                radial-gradient(1px 1px at 90px 40px, #ffd700, transparent),
+                radial-gradient(1px 1px at 130px 80px, #ffd700, transparent),
+                radial-gradient(2px 2px at 160px 30px, #ffd700, transparent),
+                radial-gradient(1px 1px at 200px 60px, #ffd700, transparent),
+                radial-gradient(2px 2px at 240px 90px, #ffd700, transparent),
+                radial-gradient(1px 1px at 280px 20px, #ffd700, transparent),
+                radial-gradient(1px 1px at 320px 70px, #ffd700, transparent),
+                radial-gradient(2px 2px at 360px 40px, #ffd700, transparent);
+            background-repeat: repeat;
+            background-size: 400px 100px;
+            animation: sparkle 3s linear infinite;
+        }
+        
+        @keyframes sparkle {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(400px); }
+        }
+        
+        .cart-badge {
+            animation: bounce 0.5s ease-in-out;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="stars-bg text-white relative z-10">
+        <div class="container mx-auto px-4 py-6">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-2">
+                    <span class="text-3xl">⭐</span>
+                    <h1 class="text-3xl font-bold text-yellow-400">Estrela de Ouro</h1>
+                </div>
+                <div class="flex space-x-3">
+                    <button onclick="showSection('contact')" class="bg-blue-500 hover:bg-blue-600 px-4 py-2 rounded-lg font-semibold text-white transition-colors">
+                        📞 Contato
+                    </button>
+                    <button onclick="toggleCart()" class="relative bg-yellow-500 hover:bg-yellow-600 px-4 py-2 rounded-lg font-semibold text-black transition-colors">
+                        🛒 Carrinho
+                        <span id="cart-count" class="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-20">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-2 py-4">
+                <button onclick="showSection('home')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors bg-yellow-500 text-black text-sm">Início</button>
+                <button onclick="showSection('novidades')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Novidades</button>
+                <button onclick="showSection('promocao')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Promoção</button>
+                <button onclick="showSection('vestidos')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Vestidos</button>
+                <button onclick="showSection('blusas')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Blusas</button>
+                <button onclick="showSection('calcas')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Calças</button>
+                <button onclick="showSection('saias')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Saias</button>
+                <button onclick="showSection('shorts')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Shorts</button>
+                <button onclick="showSection('macacao')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Macacão</button>
+                <button onclick="showSection('fitness')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Fitness</button>
+                <button onclick="showSection('modapraia')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Moda Praia</button>
+                <button onclick="showSection('conjuntos')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Conjuntos</button>
+                <button onclick="showSection('cigana')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Cigana</button>
+                <button onclick="showSection('acessorios')" class="nav-btn px-4 py-2 rounded-lg font-semibold transition-colors hover:bg-yellow-500 hover:text-black text-sm">Acessórios</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Home Section -->
+        <div id="home-section" class="section">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Bem-vinda à Estrela de Ouro</h2>
+                <p class="text-xl text-gray-600 mb-8">Moda feminina que brilha como você ✨</p>
+                
+                <!-- Banner Promocional -->
+                <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 text-black p-6 rounded-lg mb-12">
+                    <h3 class="text-2xl font-bold mb-2">🎉 PROMOÇÃO ESPECIAL!</h3>
+                    <p class="text-lg">Até 50% OFF em peças selecionadas + Frete Grátis acima de R$ 200</p>
+                </div>
+            </div>
+            
+            <!-- Categorias Principais -->
+            <div class="grid md:grid-cols-4 gap-6 mb-12">
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow cursor-pointer" onclick="showSection('novidades')">
+                    <div class="text-6xl mb-4">✨</div>
+                    <h3 class="text-xl font-bold mb-2">Novidades</h3>
+                    <p class="text-gray-600">Últimos lançamentos</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow cursor-pointer" onclick="showSection('promocao')">
+                    <div class="text-6xl mb-4">🏷️</div>
+                    <h3 class="text-xl font-bold mb-2">Promoções</h3>
+                    <p class="text-gray-600">Ofertas imperdíveis</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow cursor-pointer" onclick="showSection('vestidos')">
+                    <div class="text-6xl mb-4">👗</div>
+                    <h3 class="text-xl font-bold mb-2">Vestidos</h3>
+                    <p class="text-gray-600">Elegância em cada peça</p>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg p-6 text-center hover:shadow-xl transition-shadow cursor-pointer" onclick="showSection('conjuntos')">
+                    <div class="text-6xl mb-4">👔</div>
+                    <h3 class="text-xl font-bold mb-2">Conjuntos</h3>
+                    <p class="text-gray-600">Looks completos</p>
+                </div>
+            </div>
+            
+            <!-- Sobre a Loja -->
+            <div class="bg-white rounded-lg shadow-lg p-8 mb-12">
+                <h3 class="text-2xl font-bold text-center mb-6">Por que escolher a Estrela de Ouro?</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🚚</div>
+                        <h4 class="font-bold mb-2">Entrega Rápida</h4>
+                        <p class="text-gray-600">Frete grátis acima de R$ 200</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">💎</div>
+                        <h4 class="font-bold mb-2">Qualidade Premium</h4>
+                        <p class="text-gray-600">Tecidos selecionados e acabamento perfeito</p>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl mb-4">🔄</div>
+                        <h4 class="font-bold mb-2">Troca Garantida</h4>
+                        <p class="text-gray-600">30 dias para trocas e devoluções</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Destaques -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-bold text-center mb-8">Produtos em Destaque</h3>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="h-48 bg-gradient-to-br from-pink-200 to-pink-300 flex items-center justify-center">
+                            <span class="text-6xl">👗</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold mb-2">Vestido Festa Dourado</h4>
+                            <p class="text-yellow-600 font-bold">R$ 299,90</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="h-48 bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center">
+                            <span class="text-6xl">👚</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold mb-2">Conjunto Fitness Premium</h4>
+                            <p class="text-yellow-600 font-bold">R$ 149,90</p>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                        <div class="h-48 bg-gradient-to-br from-purple-200 to-purple-300 flex items-center justify-center">
+                            <span class="text-6xl">👜</span>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-bold mb-2">Bolsa Couro Legítimo</h4>
+                            <p class="text-yellow-600 font-bold">R$ 249,90</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vestidos Section -->
+        <div id="vestidos-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Vestidos</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-pink-200 to-pink-300 flex items-center justify-center">
+                        <span class="text-8xl">👗</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Vestido Floral Elegante</h3>
+                        <p class="text-gray-600 mb-4">Perfeito para ocasiões especiais</p>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+                            <select id="size-vestido-1" class="w-full p-2 border rounded-lg">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 189,90</span>
+                            <button onclick="addToCartWithSize('Vestido Floral Elegante', 189.90, 'size-vestido-1')" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center">
+                        <span class="text-8xl">👗</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Vestido Midi Clássico</h3>
+                        <p class="text-gray-600 mb-4">Elegância atemporal</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 159,90</span>
+                            <button onclick="addToCart('Vestido Midi Clássico', 159.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-purple-200 to-purple-300 flex items-center justify-center">
+                        <span class="text-8xl">👗</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Vestido Longo Festa</h3>
+                        <p class="text-gray-600 mb-4">Para noites especiais</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 249,90</span>
+                            <button onclick="addToCart('Vestido Longo Festa', 249.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Blusas Section -->
+        <div id="blusas-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Blusas</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-green-200 to-green-300 flex items-center justify-center">
+                        <span class="text-8xl">👚</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Blusa Social Branca</h3>
+                        <p class="text-gray-600 mb-4">Essencial para o trabalho</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 89,90</span>
+                            <button onclick="addToCart('Blusa Social Branca', 89.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-red-200 to-red-300 flex items-center justify-center">
+                        <span class="text-8xl">👚</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Blusa Estampada</h3>
+                        <p class="text-gray-600 mb-4">Casual e moderna</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 69,90</span>
+                            <button onclick="addToCart('Blusa Estampada', 69.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-yellow-200 to-yellow-300 flex items-center justify-center">
+                        <span class="text-8xl">👚</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Blusa de Seda</h3>
+                        <p class="text-gray-600 mb-4">Luxo e sofisticação</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 129,90</span>
+                            <button onclick="addToCart('Blusa de Seda', 129.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Calças Section -->
+        <div id="calcas-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Calças</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-indigo-200 to-indigo-300 flex items-center justify-center">
+                        <span class="text-8xl">👖</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Calça Jeans Skinny</h3>
+                        <p class="text-gray-600 mb-4">Clássica e versátil</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 119,90</span>
+                            <button onclick="addToCart('Calça Jeans Skinny', 119.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                        <span class="text-8xl">👖</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Calça Social Preta</h3>
+                        <p class="text-gray-600 mb-4">Elegância profissional</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 149,90</span>
+                            <button onclick="addToCart('Calça Social Preta', 149.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-teal-200 to-teal-300 flex items-center justify-center">
+                        <span class="text-8xl">👖</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Calça Wide Leg</h3>
+                        <p class="text-gray-600 mb-4">Tendência e conforto</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 139,90</span>
+                            <button onclick="addToCart('Calça Wide Leg', 139.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Saias Section -->
+        <div id="saias-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Saias</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-rose-200 to-rose-300 flex items-center justify-center">
+                        <span class="text-8xl">👗</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Saia Midi Plissada</h3>
+                        <p class="text-gray-600 mb-4">Feminina e elegante</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 99,90</span>
+                            <button onclick="addToCart('Saia Midi Plissada', 99.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-orange-200 to-orange-300 flex items-center justify-center">
+                        <span class="text-8xl">👗</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Saia Lápis</h3>
+                        <p class="text-gray-600 mb-4">Clássica e sofisticada</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 79,90</span>
+                            <button onclick="addToCart('Saia Lápis', 79.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-cyan-200 to-cyan-300 flex items-center justify-center">
+                        <span class="text-8xl">👗</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Saia Rodada</h3>
+                        <p class="text-gray-600 mb-4">Romântica e jovial</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 89,90</span>
+                            <button onclick="addToCart('Saia Rodada', 89.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Novidades Section -->
+        <div id="novidades-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Novidades</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-rose-200 to-rose-300 flex items-center justify-center">
+                        <span class="text-8xl">👗</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Vestido Tendência 2024</h3>
+                        <p class="text-gray-600 mb-4">Último lançamento</p>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+                            <select id="size-novidade-1" class="w-full p-2 border rounded-lg">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 219,90</span>
+                            <button onclick="addToCartWithSize('Vestido Tendência 2024', 219.90, 'size-novidade-1')" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promoção Section -->
+        <div id="promocao-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Promoções</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow relative">
+                    <div class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded-full text-sm font-bold">-50%</div>
+                    <div class="h-64 bg-gradient-to-br from-green-200 to-green-300 flex items-center justify-center">
+                        <span class="text-8xl">👚</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Blusa Promocional</h3>
+                        <p class="text-gray-600 mb-4">Oferta especial</p>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+                            <select id="size-promo-1" class="w-full p-2 border rounded-lg">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="text-lg text-gray-500 line-through">R$ 119,90</span>
+                                <span class="text-2xl font-bold text-red-600 ml-2">R$ 59,90</span>
+                            </div>
+                            <button onclick="addToCartWithSize('Blusa Promocional', 59.90, 'size-promo-1')" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Shorts Section -->
+        <div id="shorts-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Shorts</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-blue-200 to-blue-300 flex items-center justify-center">
+                        <span class="text-8xl">🩳</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Short Jeans Clássico</h3>
+                        <p class="text-gray-600 mb-4">Conforto e estilo</p>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+                            <select id="size-short-1" class="w-full p-2 border rounded-lg">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 79,90</span>
+                            <button onclick="addToCartWithSize('Short Jeans Clássico', 79.90, 'size-short-1')" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Macacão Section -->
+        <div id="macacao-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Macacão</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-purple-200 to-purple-300 flex items-center justify-center">
+                        <span class="text-8xl">🩱</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Macacão Elegante</h3>
+                        <p class="text-gray-600 mb-4">Sofisticação em uma peça</p>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+                            <select id="size-macacao-1" class="w-full p-2 border rounded-lg">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 199,90</span>
+                            <button onclick="addToCartWithSize('Macacão Elegante', 199.90, 'size-macacao-1')" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fitness Section -->
+        <div id="fitness-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Fitness</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-teal-200 to-teal-300 flex items-center justify-center">
+                        <span class="text-8xl">🏃‍♀️</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Conjunto Fitness Premium</h3>
+                        <p class="text-gray-600 mb-4">Conforto para seus treinos</p>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+                            <select id="size-fitness-1" class="w-full p-2 border rounded-lg">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 149,90</span>
+                            <button onclick="addToCartWithSize('Conjunto Fitness Premium', 149.90, 'size-fitness-1')" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Moda Praia Section -->
+        <div id="modapraia-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Moda Praia</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-cyan-200 to-cyan-300 flex items-center justify-center">
+                        <span class="text-8xl">👙</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Biquíni Tropical</h3>
+                        <p class="text-gray-600 mb-4">Perfeito para o verão</p>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+                            <select id="size-praia-1" class="w-full p-2 border rounded-lg">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 89,90</span>
+                            <button onclick="addToCartWithSize('Biquíni Tropical', 89.90, 'size-praia-1')" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Conjuntos Section -->
+        <div id="conjuntos-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Conjuntos</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-orange-200 to-orange-300 flex items-center justify-center">
+                        <span class="text-8xl">👔</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Conjunto Social Completo</h3>
+                        <p class="text-gray-600 mb-4">Look profissional</p>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+                            <select id="size-conjunto-1" class="w-full p-2 border rounded-lg">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 299,90</span>
+                            <button onclick="addToCartWithSize('Conjunto Social Completo', 299.90, 'size-conjunto-1')" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cigana Section -->
+        <div id="cigana-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Cigana</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-red-200 to-red-300 flex items-center justify-center">
+                        <span class="text-8xl">💃</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Vestido Cigana Longo</h3>
+                        <p class="text-gray-600 mb-4">Estilo boêmio e elegante</p>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+                            <select id="size-cigana-1" class="w-full p-2 border rounded-lg">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 179,90</span>
+                            <button onclick="addToCartWithSize('Vestido Cigana Longo', 179.90, 'size-cigana-1')" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-purple-200 to-purple-300 flex items-center justify-center">
+                        <span class="text-8xl">🌙</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Blusa Cigana Bordada</h3>
+                        <p class="text-gray-600 mb-4">Detalhes únicos e especiais</p>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+                            <select id="size-cigana-2" class="w-full p-2 border rounded-lg">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 129,90</span>
+                            <button onclick="addToCartWithSize('Blusa Cigana Bordada', 129.90, 'size-cigana-2')" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-amber-200 to-amber-300 flex items-center justify-center">
+                        <span class="text-8xl">✨</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Saia Cigana Rodada</h3>
+                        <p class="text-gray-600 mb-4">Movimento e liberdade</p>
+                        <div class="mb-4">
+                            <label class="block text-sm font-semibold mb-2">Tamanho:</label>
+                            <select id="size-cigana-3" class="w-full p-2 border rounded-lg">
+                                <option value="">Selecione o tamanho</option>
+                                <option value="PP">PP</option>
+                                <option value="P">P</option>
+                                <option value="M">M</option>
+                                <option value="G">G</option>
+                                <option value="GG">GG</option>
+                            </select>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 109,90</span>
+                            <button onclick="addToCartWithSize('Saia Cigana Rodada', 109.90, 'size-cigana-3')" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Acessórios Section -->
+        <div id="acessorios-section" class="section hidden">
+            <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Acessórios</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-amber-200 to-amber-300 flex items-center justify-center">
+                        <span class="text-8xl">💍</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Colar Dourado</h3>
+                        <p class="text-gray-600 mb-4">Brilho especial</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 49,90</span>
+                            <button onclick="addToCart('Colar Dourado', 49.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-emerald-200 to-emerald-300 flex items-center justify-center">
+                        <span class="text-8xl">👜</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Bolsa de Couro</h3>
+                        <p class="text-gray-600 mb-4">Qualidade premium</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 199,90</span>
+                            <button onclick="addToCart('Bolsa de Couro', 199.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-xl transition-shadow">
+                    <div class="h-64 bg-gradient-to-br from-violet-200 to-violet-300 flex items-center justify-center">
+                        <span class="text-8xl">👠</span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2">Sapato Salto Alto</h3>
+                        <p class="text-gray-600 mb-4">Elegância nos pés</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-2xl font-bold text-yellow-600">R$ 159,90</span>
+                            <button onclick="addToCart('Sapato Salto Alto', 159.90)" class="bg-yellow-500 hover:bg-yellow-600 text-black px-4 py-2 rounded-lg font-semibold transition-colors">Adicionar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+
+    <!-- Cart Sidebar -->
+    <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 z-50">
+        <div class="p-6 h-full flex flex-col">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold">Seu Carrinho</h3>
+                <button onclick="toggleCart()" class="text-gray-500 hover:text-gray-700 text-2xl">✕</button>
+            </div>
+            
+            <div id="cart-items" class="flex-1 overflow-y-auto space-y-4 mb-6">
+                <p class="text-gray-500 text-center">Seu carrinho está vazio</p>
+            </div>
+            
+            <div id="cart-total" class="border-t pt-4 mb-4 hidden">
+                <div class="flex justify-between items-center font-bold text-xl">
+                    <span>Total:</span>
+                    <span id="total-amount">R$ 0,00</span>
+                </div>
+            </div>
+            
+            <div class="space-y-3">
+                <div id="customer-info" class="hidden">
+                    <label class="block text-sm font-semibold mb-2">Seu nome:</label>
+                    <input type="text" id="customer-name" placeholder="Digite seu nome completo" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-500 mb-3">
+                </div>
+                <button id="checkout-btn" onclick="checkout()" class="w-full bg-green-500 hover:bg-green-600 text-white py-3 rounded-lg font-semibold transition-colors hidden">
+                    Finalizar Pedido no WhatsApp
+                </button>
+                <button onclick="toggleCart()" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-800 py-3 rounded-lg font-semibold transition-colors">
+                    Continuar Comprando
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cart Overlay -->
+    <div id="cart-overlay" class="fixed inset-0 bg-black bg-opacity-50 hidden z-40" onclick="toggleCart()"></div>
+
+
+
+    <!-- Contact Page -->
+    <div id="contact-section" class="section hidden">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Entre em Contato</h2>
+                <p class="text-xl text-gray-600">Estamos aqui para ajudar você! ✨</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Informações de Contato -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-bold mb-6 text-center">📍 Nossa Loja</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                            <span class="text-3xl">🏪</span>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Endereço da Loja</h4>
+                                <p class="text-gray-600">Rua das Estrelas, 123 - Centro</p>
+                                <p class="text-gray-600">São Paulo - SP, 01234-567</p>
+                                <p class="text-gray-600 text-sm mt-2">Próximo ao Shopping Center</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                            <span class="text-3xl">📞</span>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Telefones</h4>
+                                <p class="text-gray-600">Loja: (11) 3333-4444</p>
+                                <p class="text-gray-600">WhatsApp: (11) 99999-9999</p>
+                                <p class="text-gray-600 text-sm mt-2">Atendimento rápido via WhatsApp</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4 p-4 bg-gray-50 rounded-lg">
+                            <span class="text-3xl">📧</span>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">E-mail</h4>
+                                <p class="text-gray-600">contato@estrelaouro.com.br</p>
+                                <p class="text-gray-600">vendas@estrelaouro.com.br</p>
+                                <p class="text-gray-600 text-sm mt-2">Respondemos em até 24h</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start space-x-4 p-4 bg-yellow-50 rounded-lg border-2 border-yellow-200">
+                            <span class="text-3xl">🕒</span>
+                            <div>
+                                <h4 class="font-bold text-lg mb-2">Horário de Funcionamento</h4>
+                                <div class="space-y-1">
+                                    <p class="text-gray-700"><strong>Segunda a Sexta:</strong> 9h às 18h</p>
+                                    <p class="text-gray-700"><strong>Sábado:</strong> 9h às 16h</p>
+                                    <p class="text-gray-700"><strong>Domingo:</strong> Fechado</p>
+                                </div>
+                                <p class="text-yellow-700 text-sm mt-2 font-semibold">Atendimento online 24h via WhatsApp</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Redes Sociais -->
+                <div class="space-y-8">
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h3 class="text-2xl font-bold mb-6 text-center">📱 Redes Sociais</h3>
+                        
+                        <div class="space-y-4">
+                            <a href="https://instagram.com/estrelaouro_oficial" target="_blank" class="flex items-center space-x-4 p-4 bg-gradient-to-r from-pink-100 to-purple-100 rounded-lg hover:from-pink-200 hover:to-purple-200 transition-all duration-300 transform hover:scale-105">
+                                <div class="text-4xl">📷</div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-lg">Instagram</h4>
+                                    <p class="text-gray-600">@estrelaouro_oficial</p>
+                                    <p class="text-sm text-gray-500">Veja nossos looks e novidades diárias!</p>
+                                </div>
+                                <div class="text-pink-500 text-xl">→</div>
+                            </a>
+                            
+                            <a href="https://facebook.com/estrelaouro" target="_blank" class="flex items-center space-x-4 p-4 bg-blue-100 rounded-lg hover:bg-blue-200 transition-all duration-300 transform hover:scale-105">
+                                <div class="text-4xl">📘</div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-lg">Facebook</h4>
+                                    <p class="text-gray-600">Estrela de Ouro Moda Feminina</p>
+                                    <p class="text-sm text-gray-500">Promoções exclusivas e eventos!</p>
+                                </div>
+                                <div class="text-blue-500 text-xl">→</div>
+                            </a>
+                            
+                            <a href="https://wa.me/5511999999999" target="_blank" class="flex items-center space-x-4 p-4 bg-green-100 rounded-lg hover:bg-green-200 transition-all duration-300 transform hover:scale-105">
+                                <div class="text-4xl">💬</div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-lg">WhatsApp</h4>
+                                    <p class="text-gray-600">(11) 99999-9999</p>
+                                    <p class="text-sm text-gray-500">Atendimento personalizado e rápido!</p>
+                                </div>
+                                <div class="text-green-500 text-xl">→</div>
+                            </a>
+                            
+                            <a href="https://tiktok.com/@estrelaouro" target="_blank" class="flex items-center space-x-4 p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition-all duration-300 transform hover:scale-105">
+                                <div class="text-4xl">🎵</div>
+                                <div class="flex-1">
+                                    <h4 class="font-bold text-lg">TikTok</h4>
+                                    <p class="text-gray-600">@estrelaouro</p>
+                                    <p class="text-sm text-gray-500">Trends de moda e dicas de estilo!</p>
+                                </div>
+                                <div class="text-gray-500 text-xl">→</div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Informações Adicionais -->
+                    <div class="bg-white rounded-lg shadow-lg p-8">
+                        <h3 class="text-2xl font-bold mb-6 text-center">💎 Diferenciais</h3>
+                        
+                        <div class="grid grid-cols-1 gap-4">
+                            <div class="flex items-center space-x-3 p-3 bg-yellow-50 rounded-lg">
+                                <span class="text-2xl">🚚</span>
+                                <div>
+                                    <h4 class="font-semibold">Frete Grátis</h4>
+                                    <p class="text-sm text-gray-600">Acima de R$ 200 para todo Brasil</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-3 p-3 bg-green-50 rounded-lg">
+                                <span class="text-2xl">🔄</span>
+                                <div>
+                                    <h4 class="font-semibold">Troca Garantida</h4>
+                                    <p class="text-sm text-gray-600">30 dias para trocas e devoluções</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-3 p-3 bg-blue-50 rounded-lg">
+                                <span class="text-2xl">💳</span>
+                                <div>
+                                    <h4 class="font-semibold">Parcelamento</h4>
+                                    <p class="text-sm text-gray-600">Até 12x sem juros no cartão</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center space-x-3 p-3 bg-purple-50 rounded-lg">
+                                <span class="text-2xl">⭐</span>
+                                <div>
+                                    <h4 class="font-semibold">Qualidade Premium</h4>
+                                    <p class="text-sm text-gray-600">Tecidos selecionados e acabamento perfeito</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Call to Action -->
+            <div class="mt-12 text-center">
+                <div class="bg-gradient-to-r from-yellow-400 to-yellow-600 text-black p-8 rounded-lg">
+                    <h3 class="text-2xl font-bold mb-4">💬 Fale Conosco Agora!</h3>
+                    <p class="text-lg mb-6">Tire suas dúvidas, faça seu pedido ou agende uma visita à nossa loja</p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <a href="https://wa.me/5511999999999" target="_blank" class="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                            💬 WhatsApp
+                        </a>
+                        <a href="tel:1133334444" class="bg-blue-500 hover:bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                            📞 Ligar Agora
+                        </a>
+                        <a href="mailto:contato@estrelaouro.com.br" class="bg-purple-500 hover:bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold transition-colors">
+                            📧 E-mail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="stars-bg text-white mt-16">
+        <div class="container mx-auto px-4 py-8 text-center relative z-10">
+            <div class="flex items-center justify-center space-x-2 mb-4">
+                <span class="text-2xl">⭐</span>
+                <h3 class="text-xl font-bold text-yellow-400">Estrela de Ouro</h3>
+            </div>
+            <p class="mb-4">Moda feminina que brilha como você</p>
+            <p class="text-sm text-gray-300">© 2024 Estrela de Ouro. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        let cart = [];
+        let currentSection = 'home';
+
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+            
+            // Show selected section
+            document.getElementById(section + '-section').classList.remove('hidden');
+            
+            // Update navigation only if it's a nav button click
+            if (event && event.target && event.target.classList.contains('nav-btn')) {
+                document.querySelectorAll('.nav-btn').forEach(btn => {
+                    btn.classList.remove('bg-yellow-500', 'text-black');
+                    btn.classList.add('hover:bg-yellow-500', 'hover:text-black');
+                });
+                
+                event.target.classList.add('bg-yellow-500', 'text-black');
+                event.target.classList.remove('hover:bg-yellow-500', 'hover:text-black');
+            }
+            
+            // Scroll to top when changing sections
+            window.scrollTo(0, 0);
+            
+            currentSection = section;
+        }
+
+
+
+        function addToCart(name, price) {
+            const existingItem = cart.find(item => item.name === name && !item.size);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            
+            updateCartDisplay();
+            
+            // Show cart sidebar automatically
+            toggleCart();
+            
+            // Add bounce animation to cart button
+            const cartCount = document.getElementById('cart-count');
+            cartCount.classList.add('cart-badge');
+            setTimeout(() => cartCount.classList.remove('cart-badge'), 500);
+        }
+
+        function addToCartWithSize(name, price, sizeSelectId) {
+            const sizeSelect = document.getElementById(sizeSelectId);
+            const selectedSize = sizeSelect.value;
+            
+            if (!selectedSize) {
+                alert('Por favor, selecione um tamanho antes de adicionar ao carrinho.');
+                return;
+            }
+            
+            const itemKey = `${name} - Tamanho ${selectedSize}`;
+            const existingItem = cart.find(item => item.name === itemKey);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: itemKey, price, quantity: 1, size: selectedSize });
+            }
+            
+            // Reset size selection
+            sizeSelect.value = '';
+            
+            updateCartDisplay();
+            
+            // Show cart sidebar automatically
+            toggleCart();
+            
+            // Add bounce animation to cart button
+            const cartCount = document.getElementById('cart-count');
+            cartCount.classList.add('cart-badge');
+            setTimeout(() => cartCount.classList.remove('cart-badge'), 500);
+        }
+
+        function removeFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCartDisplay();
+        }
+
+        function updateQuantity(name, change) {
+            const item = cart.find(item => item.name === name);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(name);
+                } else {
+                    updateCartDisplay();
+                }
+            }
+        }
+
+        function updateCartDisplay() {
+            const cartCount = document.getElementById('cart-count');
+            const cartItems = document.getElementById('cart-items');
+            const cartTotal = document.getElementById('cart-total');
+            const checkoutBtn = document.getElementById('checkout-btn');
+            const customerInfo = document.getElementById('customer-info');
+            const totalAmount = document.getElementById('total-amount');
+            
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            cartCount.textContent = totalItems;
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Seu carrinho está vazio</p>';
+                cartTotal.classList.add('hidden');
+                checkoutBtn.classList.add('hidden');
+                customerInfo.classList.add('hidden');
+            } else {
+                cartItems.innerHTML = cart.map(item => `
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <div class="flex justify-between items-start mb-2">
+                            <h4 class="font-semibold text-sm">${item.name}</h4>
+                            <button onclick="removeFromCart('${item.name}')" class="text-red-500 hover:text-red-700 text-lg">×</button>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <p class="text-sm text-gray-600">R$ ${item.price.toFixed(2).replace('.', ',')}</p>
+                            <div class="flex items-center space-x-2">
+                                <button onclick="updateQuantity('${item.name}', -1)" class="bg-gray-200 hover:bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center text-sm">-</button>
+                                <span class="font-semibold px-2">${item.quantity}</span>
+                                <button onclick="updateQuantity('${item.name}', 1)" class="bg-gray-200 hover:bg-gray-300 w-8 h-8 rounded-full flex items-center justify-center text-sm">+</button>
+                            </div>
+                        </div>
+                        <div class="text-right mt-2">
+                            <span class="font-bold text-yellow-600">R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}</span>
+                        </div>
+                    </div>
+                `).join('');
+                
+                totalAmount.textContent = `R$ ${totalPrice.toFixed(2).replace('.', ',')}`;
+                cartTotal.classList.remove('hidden');
+                checkoutBtn.classList.remove('hidden');
+                customerInfo.classList.remove('hidden');
+            }
+        }
+
+        function toggleCart() {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            
+            if (sidebar.classList.contains('translate-x-full')) {
+                // Show cart
+                sidebar.classList.remove('translate-x-full');
+                sidebar.classList.add('translate-x-0');
+                overlay.classList.remove('hidden');
+            } else {
+                // Hide cart
+                sidebar.classList.remove('translate-x-0');
+                sidebar.classList.add('translate-x-full');
+                overlay.classList.add('hidden');
+            }
+        }
+
+
+
+        function checkout() {
+            if (cart.length === 0) return;
+            
+            const customerName = document.getElementById('customer-name').value.trim();
+            
+            if (!customerName) {
+                alert('Por favor, digite seu nome antes de finalizar o pedido.');
+                document.getElementById('customer-name').focus();
+                return;
+            }
+            
+            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            let message = "🛒 *Pedido - Estrela de Ouro*\n\n";
+            message += `👤 *Cliente:* ${customerName}\n\n`;
+            message += "📋 *Itens do pedido:*\n";
+            
+            cart.forEach(item => {
+                message += `• ${item.name}\n`;
+                message += `  Quantidade: ${item.quantity}\n`;
+                message += `  Preço unitário: R$ ${item.price.toFixed(2).replace('.', ',')}\n`;
+                message += `  Subtotal: R$ ${(item.price * item.quantity).toFixed(2).replace('.', ',')}\n\n`;
+            });
+            
+            message += `💰 *Total do pedido: R$ ${totalPrice.toFixed(2).replace('.', ',')}*\n\n`;
+            message += "📞 Aguardo confirmação e informações para entrega!";
+            
+            const whatsappNumber = "5521985141176"; // Substitua pelo número real da loja
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            
+            // Limpar carrinho e nome após enviar
+            cart = [];
+            document.getElementById('customer-name').value = '';
+            updateCartDisplay();
+            toggleCart();
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCartDisplay();
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96d4ebe3107b2d4c',t:'MTc1NDg4NTgyNy4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
